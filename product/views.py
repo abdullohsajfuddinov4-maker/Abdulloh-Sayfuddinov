@@ -35,6 +35,22 @@ class ProductCreate(View):
         return render(request, 'create.html', context={'form':form})
 
 
+class ProductUpdate(View):
+    def get(self,request,pk):
+        product = get_object_or_404(Product,pk=pk)
+        form = ProductForm(instance=product)
+
+        context = {'form':form}
+        return render(request,'update.html',context)
+
+    def post(self,request,pk):
+        product = get_object_or_404(Product, pk=pk)
+        form = ProductForm(request.POST,request.FILES,instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        return render(request, 'create.html', context={'form':form})
+
 
 
 
