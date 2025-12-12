@@ -52,6 +52,17 @@ class ProductUpdate(View):
         return render(request, 'create.html', context={'form':form})
 
 
+class ProductDelete(View):
+    def get(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        context = {'product': product}
+        return render(request, 'delete.html', context)
+
+    def post(self, request, pk):
+        product = get_object_or_404(Product, pk=pk)
+        product.delete()
+        return redirect('home')
+
 
 
 
