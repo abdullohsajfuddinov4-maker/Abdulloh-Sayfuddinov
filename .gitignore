@@ -1,0 +1,36 @@
+# Игнорирование артефактов сборки и выходных директорий
+/build/
+/dist/
+/target/
+*.o
+*.pyc
+*.class
+
+# Игнорирование директорий с зависимостями
+/node_modules/
+/vendor/
+.venv/
+venv/
+/packages/
+
+# Игнорирование системных и временных файлов
+.DS_Store # macOS
+Thumbs.db # Windows
+*.log
+*.tmp
+temp/
+.cache/
+
+# Игнорирование файлов IDE и редакторов
+.idea/ # JetBrains IDEs (IntelliJ, PyCharm, etc)
+.vscode/ # VS Code
+*.iml # JetBrains project files
+*.swp # Vim
+.project
+.classpath
+
+# Игнорирование файлов с конфиденциальными данными и переменными окружения
+.env
+.env.*
+config.json
+secrets.json
