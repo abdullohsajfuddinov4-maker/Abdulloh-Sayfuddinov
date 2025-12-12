@@ -21,3 +21,22 @@ class ProductDetail(View):
         return render(request,'dateil.html',context)
 
 
+class ProductCreate(View):
+    def get(self,request):
+        form = ProductForm()
+        context = {'form':form}
+        return render(request,'create.html',context)
+
+    def post(self,request):
+        form = ProductForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        return render(request, 'create.html', context={'form':form})
+
+
+
+
+
+
+

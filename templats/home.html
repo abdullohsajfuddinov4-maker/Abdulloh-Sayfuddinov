@@ -7,7 +7,10 @@
 <body>
 {% for i in product %}
 <a href="{% url 'dateil' i.pk %}"> {{ i.name }}</a><br>
-{% endfor %}
 
+{% endfor %}
+<button>
+    <a href="{% url 'create' %}">create</a>
+    </button>
 </body>
 </html>
