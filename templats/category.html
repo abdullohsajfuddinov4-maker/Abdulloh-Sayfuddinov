@@ -9,10 +9,15 @@
 {% for i in products %}
     <a href="{% url 'dateil' i.pk %}">
         {{ i.name }}
+        {{ i.image }}
     </a><br>
 {% empty %}
     <p>mahsulot yoq</p>
 {% endfor %}
 <button>
-    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'home' %}">Home</a><br>
+</button>
+
+<button>
+    <a href="{% url 'create' %}">create</a>
 </button>

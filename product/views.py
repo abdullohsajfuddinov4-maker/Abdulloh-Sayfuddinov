@@ -79,6 +79,26 @@ class ProductCategory(View):
         return render(request, 'category.html', context)
 
 
+class ProductList(View):
+    def get(self, request):
+        q = request.GET.get('q', '')
+
+        product = Product.objects.all().order_by('-id')
+
+        if q:
+            product = product.filter(name__icontains=q)
+
+        categories = Category.objects.all()
+
+        context = {
+            'product': product,
+            'categories': categories,
+            'q': q
+        }
+        return render(request, 'home.html', context)
+
+
+
 
 
 
