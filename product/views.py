@@ -10,8 +10,10 @@ from django.shortcuts import get_object_or_404
 class ProductList(View):
     def get(self,request):
         product = Product.objects.all().order_by('-id')
-        context = {'product':product}
+        categories = Category.objects.all()
+        context = {'product': product, 'categories': categories}
         return render(request,'home.html',context)
+
 
 
 class ProductDetail(View):
@@ -62,6 +64,22 @@ class ProductDelete(View):
         product = get_object_or_404(Product, pk=pk)
         product.delete()
         return redirect('home')
+
+
+class ProductCategory(View):
+    def get(self, request, pk):
+        category = get_object_or_404(Category, pk=pk)
+        products = Product.objects.filter(category=category)
+        categories = Category.objects.all()
+        context = {
+            'category': category,
+            'products': products,
+            'categories': categories
+        }
+        return render(request, 'category.html', context)
+
+
+
 
 
 

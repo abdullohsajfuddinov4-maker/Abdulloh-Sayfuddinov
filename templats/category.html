@@ -1,5 +1,4 @@
-<h1>Hamma mahsulot</h1>
-
+<h1>Category {{ category.name }}</h1>
 
 {% for c in categories %}
     <a href="{% url 'category' c.pk %}">{{ c.name }}</a> |
@@ -7,10 +6,13 @@
 
 <hr>
 
-{% for i in product %}
+{% for i in products %}
     <a href="{% url 'dateil' i.pk %}">
         {{ i.name }}
     </a><br>
+{% empty %}
+    <p>mahsulot yoq</p>
 {% endfor %}
-
-<a href="{% url 'create' %}">Create</a>
+<button>
+    <a href="{% url 'home' %}">Home</a>
+</button>
